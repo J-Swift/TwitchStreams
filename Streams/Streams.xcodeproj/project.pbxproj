@@ -21,6 +21,9 @@
 		BFD2B46118C2CB780086496C /* SmokeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B46018C2CB780086496C /* SmokeTest.m */; };
 		BFD2B46D18C2CC430086496C /* RRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B46C18C2CC430086496C /* RRMainViewController.m */; };
 		BFD2B46E18C2CDEF0086496C /* RRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B46C18C2CC430086496C /* RRMainViewController.m */; };
+		BFD2B47718C2DE1A0086496C /* RRChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B47618C2DE1A0086496C /* RRChannelTest.m */; };
+		BFD2B47A18C2E0D80086496C /* RRChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B47918C2E0D80086496C /* RRChannel.m */; };
+		BFD2B47B18C2E0D80086496C /* RRChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B47918C2E0D80086496C /* RRChannel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,9 @@
 		BFD2B46018C2CB780086496C /* SmokeTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmokeTest.m; sourceTree = "<group>"; };
 		BFD2B46B18C2CC430086496C /* RRMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRMainViewController.h; path = Classes/RRMainViewController.h; sourceTree = "<group>"; };
 		BFD2B46C18C2CC430086496C /* RRMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRMainViewController.m; path = Classes/RRMainViewController.m; sourceTree = "<group>"; };
+		BFD2B47618C2DE1A0086496C /* RRChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRChannelTest.m; path = Classes/RRChannelTest.m; sourceTree = "<group>"; };
+		BFD2B47818C2E0D80086496C /* RRChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRChannel.h; path = Classes/RRChannel.h; sourceTree = "<group>"; };
+		BFD2B47918C2E0D80086496C /* RRChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRChannel.m; path = Classes/RRChannel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 		BFD2B45A18C2CB780086496C /* StreamsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BFD2B47018C2DD790086496C /* Classes */,
 				BFD2B46018C2CB780086496C /* SmokeTest.m */,
 				BFD2B45B18C2CB780086496C /* Supporting Files */,
 			);
@@ -150,12 +157,38 @@
 		BFD2B46A18C2CBD50086496C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BFD2B47518C2DDEE0086496C /* Twitch */,
 				BFD2B44A18C2CB780086496C /* RRAppDelegate.h */,
 				BFD2B44B18C2CB780086496C /* RRAppDelegate.m */,
 				BFD2B46B18C2CC430086496C /* RRMainViewController.h */,
 				BFD2B46C18C2CC430086496C /* RRMainViewController.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		BFD2B47018C2DD790086496C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B47418C2DDE20086496C /* Twitch */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		BFD2B47418C2DDE20086496C /* Twitch */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B47618C2DE1A0086496C /* RRChannelTest.m */,
+			);
+			name = Twitch;
+			sourceTree = "<group>";
+		};
+		BFD2B47518C2DDEE0086496C /* Twitch */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B47818C2E0D80086496C /* RRChannel.h */,
+				BFD2B47918C2E0D80086496C /* RRChannel.m */,
+			);
+			name = Twitch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +290,7 @@
 				BFD2B44C18C2CB780086496C /* RRAppDelegate.m in Sources */,
 				BFD2B44818C2CB780086496C /* main.m in Sources */,
 				BFD2B46D18C2CC430086496C /* RRMainViewController.m in Sources */,
+				BFD2B47A18C2E0D80086496C /* RRChannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD2B46118C2CB780086496C /* SmokeTest.m in Sources */,
+				BFD2B47718C2DE1A0086496C /* RRChannelTest.m in Sources */,
 				BFD2B46E18C2CDEF0086496C /* RRMainViewController.m in Sources */,
+				BFD2B47B18C2E0D80086496C /* RRChannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +494,7 @@
 				BFD2B46618C2CB780086496C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BFD2B46718C2CB780086496C /* Build configuration list for PBXNativeTarget "StreamsTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +503,7 @@
 				BFD2B46918C2CB780086496C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
