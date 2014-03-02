@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) NSString *name;
 
+// Designated initializer
 - (instancetype)initWithName:(NSString *)name;
 
 @end
