@@ -24,6 +24,9 @@
 		BFD2B47718C2DE1A0086496C /* RRChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B47618C2DE1A0086496C /* RRChannelTest.m */; };
 		BFD2B47A18C2E0D80086496C /* RRChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B47918C2E0D80086496C /* RRChannel.m */; };
 		BFD2B47B18C2E0D80086496C /* RRChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B47918C2E0D80086496C /* RRChannel.m */; };
+		BFD2B48218C3D1BB0086496C /* RRUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B48118C3D1BB0086496C /* RRUserTest.m */; };
+		BFD2B48618C3D5900086496C /* RRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B48518C3D5900086496C /* RRUser.m */; };
+		BFD2B48718C3D5900086496C /* RRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B48518C3D5900086496C /* RRUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		BFD2B47618C2DE1A0086496C /* RRChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRChannelTest.m; path = Classes/RRChannelTest.m; sourceTree = "<group>"; };
 		BFD2B47818C2E0D80086496C /* RRChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRChannel.h; path = Classes/RRChannel.h; sourceTree = "<group>"; };
 		BFD2B47918C2E0D80086496C /* RRChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRChannel.m; path = Classes/RRChannel.m; sourceTree = "<group>"; };
+		BFD2B48118C3D1BB0086496C /* RRUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRUserTest.m; path = Classes/RRUserTest.m; sourceTree = "<group>"; };
+		BFD2B48418C3D5900086496C /* RRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRUser.h; path = Classes/RRUser.h; sourceTree = "<group>"; };
+		BFD2B48518C3D5900086496C /* RRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRUser.m; path = Classes/RRUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,11 +163,11 @@
 		BFD2B46A18C2CBD50086496C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BFD2B47518C2DDEE0086496C /* Twitch */,
+				BFD2B48318C3D56F0086496C /* User */,
+				BFD2B47C18C2E28C0086496C /* Main */,
+				BFD2B47D18C2E41A0086496C /* Channel */,
 				BFD2B44A18C2CB780086496C /* RRAppDelegate.h */,
 				BFD2B44B18C2CB780086496C /* RRAppDelegate.m */,
-				BFD2B46B18C2CC430086496C /* RRMainViewController.h */,
-				BFD2B46C18C2CC430086496C /* RRMainViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -169,26 +175,53 @@
 		BFD2B47018C2DD790086496C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BFD2B47418C2DDE20086496C /* Twitch */,
+				BFD2B48018C3D1990086496C /* User */,
+				BFD2B47E18C2E42D0086496C /* Channel */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		BFD2B47418C2DDE20086496C /* Twitch */ = {
+		BFD2B47C18C2E28C0086496C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BFD2B47618C2DE1A0086496C /* RRChannelTest.m */,
+				BFD2B46B18C2CC430086496C /* RRMainViewController.h */,
+				BFD2B46C18C2CC430086496C /* RRMainViewController.m */,
 			);
-			name = Twitch;
+			name = Main;
 			sourceTree = "<group>";
 		};
-		BFD2B47518C2DDEE0086496C /* Twitch */ = {
+		BFD2B47D18C2E41A0086496C /* Channel */ = {
 			isa = PBXGroup;
 			children = (
 				BFD2B47818C2E0D80086496C /* RRChannel.h */,
 				BFD2B47918C2E0D80086496C /* RRChannel.m */,
 			);
-			name = Twitch;
+			name = Channel;
+			sourceTree = "<group>";
+		};
+		BFD2B47E18C2E42D0086496C /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B47618C2DE1A0086496C /* RRChannelTest.m */,
+			);
+			name = Channel;
+			sourceTree = "<group>";
+		};
+		BFD2B48018C3D1990086496C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B48118C3D1BB0086496C /* RRUserTest.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		BFD2B48318C3D56F0086496C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B48418C3D5900086496C /* RRUser.h */,
+				BFD2B48518C3D5900086496C /* RRUser.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +324,7 @@
 				BFD2B44818C2CB780086496C /* main.m in Sources */,
 				BFD2B46D18C2CC430086496C /* RRMainViewController.m in Sources */,
 				BFD2B47A18C2E0D80086496C /* RRChannel.m in Sources */,
+				BFD2B48618C3D5900086496C /* RRUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +334,9 @@
 			files = (
 				BFD2B46118C2CB780086496C /* SmokeTest.m in Sources */,
 				BFD2B47718C2DE1A0086496C /* RRChannelTest.m in Sources */,
+				BFD2B48218C3D1BB0086496C /* RRUserTest.m in Sources */,
 				BFD2B46E18C2CDEF0086496C /* RRMainViewController.m in Sources */,
+				BFD2B48718C3D5900086496C /* RRUser.m in Sources */,
 				BFD2B47B18C2E0D80086496C /* RRChannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
