@@ -36,4 +36,29 @@
                 @"favorites should contain provided channel");
 }
 
+- (void)testCantFavoriteAlreadyFavoritedChannels
+{
+  RRChannel *channel1 = [[RRChannel alloc] initWithName:@"test_channel_1"];
+  RRChannel *channel2 = [[RRChannel alloc] initWithName:@"test_channel_2"];
+  RRUser *user = [RRUser currentUser];
+  
+  XCTAssertEqual([[user favoriteChannels] count], 0U,
+                 @"before add");
+  
+  [user addChannelToFavorites:channel1];
+  
+  XCTAssertEqual([[user favoriteChannels] count], 1U,
+                 @"after first add");
+  
+  [user addChannelToFavorites:channel1];
+  
+  XCTAssertEqual([[user favoriteChannels] count], 1U,
+                 @"after duplicate add");
+  
+  [user addChannelToFavorites:channel2];
+  
+  XCTAssertEqual([[user favoriteChannels] count], 2U,
+                 @"after second add");
+}
+
 @end

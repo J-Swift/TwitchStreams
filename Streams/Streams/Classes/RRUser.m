@@ -32,7 +32,8 @@
 
 - (void)addChannelToFavorites:(RRChannel *)channel
 {
-  [_favoriteChannelsStore addObject:channel];
+  if ( ![_favoriteChannelsStore containsObject:channel] )
+    [_favoriteChannelsStore addObject:channel];
 }
 
 @end
