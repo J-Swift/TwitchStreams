@@ -35,4 +35,15 @@
   XCTAssertThrows( [RRChannel new] );
 }
 
+- (void)testNameEqualityIsChannelEquality
+{
+  NSString *channelName = @"fake_channel_name";
+  RRChannel *channel1 = [[RRChannel alloc] initWithName:channelName];
+  RRChannel *channel2 = [[RRChannel alloc] initWithName:channelName];
+  XCTAssertFalse(channel1 == channel2,
+                 @"pointer inequality");
+  XCTAssertTrue([channel1 isEqual:channel2],
+                @"name equality");
+}
+
 @end

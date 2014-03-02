@@ -36,4 +36,35 @@
     _name = [name copy];
 }
 
+#pragma mark - Overrides
+
+- (BOOL)isEqualToChannel:(RRChannel *)other
+{
+  if ( !other )
+    return NO;
+  
+  return ( [other.name isEqualToString:self.name] );
+}
+
+- (BOOL)isEqual:(id)object
+{
+  if ( object == self )
+    return YES;
+  
+  if ( ![object isKindOfClass:[RRChannel class]] )
+    return NO;
+  
+  return [self isEqualToChannel:object];
+}
+
+- (NSUInteger)hash
+{
+  return [self.name hash];
+}
+
+- (NSString *)description
+{
+  return [NSString stringWithFormat:@"<Channel: %@>", self.name];
+}
+
 @end
