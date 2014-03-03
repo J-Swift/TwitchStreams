@@ -8,12 +8,18 @@
 
 #import "RRMainViewController.h"
 
+#import "RRChannelCell.h"
+#import "RREmptyChannelCell.h"
+
 #import "RRUser.h"
-#import "RRChannel.h"
+#import "RRTwitchApiWorker.h"
 
 @interface RRMainViewController () <UITableViewDataSource, UIAlertViewDelegate>
 
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+
 @property (nonatomic, strong) RRUser *currentUser;
+@property (nonatomic, strong) RRTwitchApiWorker *apiWorker;
 
 @end
 
@@ -22,7 +28,10 @@
 - (id)init
 {
   if ( self = [super init] )
+  {
     self.currentUser = [RRUser currentUser];
+    self.apiWorker = [RRTwitchApiWorker new];
+  }
   
   return self;
 }
@@ -32,9 +41,16 @@
   UIView *header = [self generateTableHeader];
   
   UITableView *tableView = [UITableView new];
+  [tableView registerClass:[RREmptyChannelCell class]
+    forCellReuseIdentifier:[[RREmptyChannelCell class] description]];
+  [tableView registerClass:[RRChannelCell class]
+    forCellReuseIdentifier:[[RRChannelCell class] description]];
   tableView.tableHeaderView = header;
   tableView.dataSource = self;
   tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0); // iOS 7
+  
+  self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+  self.spinner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
   
   self.view = tableView;
 }
@@ -48,14 +64,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [UITableViewCell new];
-  
   if ( [self isEmpty] )
-    cell.textLabel.attributedText = [self attributedTextForEmpty];
+    return [tableView dequeueReusableCellWithIdentifier:[[RREmptyChannelCell class] description]];
   else
-    cell.textLabel.text = [self channelForIndexPath:indexPath].name;
-  
-  return cell;
+  {
+    RRChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:[[RRChannelCell class] description]];
+    cell.channel = [self channelForIndexPath:indexPath];
+    return cell;
+  }
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -69,9 +85,19 @@
 {
   if ( ![alertView cancelButtonIndex] == buttonIndex )
   {
+    [self showSpinner];
+    
     NSString *channelName = [[alertView textFieldAtIndex:0] text];
-    [self.currentUser addChannelToFavorites:[RRChannel channelWithName:channelName imagePath:nil lastUpdateTime:[NSDate date]]];
-    [((UITableView *)self.view) reloadData];
+    [self.apiWorker getChannel:channelName onCompletion:^(RRChannel *channel, NSError *error) {
+      [self hideSpinner];
+      
+      // TODO: handle error
+      if ( !error )
+      {
+        [self.currentUser addChannelToFavorites:channel];
+        [((UITableView *)self.view) reloadData];
+      }
+    }];
   }
 }
 
@@ -123,13 +149,17 @@
   return [self.currentUser favoriteChannels][(NSUInteger)indexPath.row];
 }
 
-- (NSAttributedString *)attributedTextForEmpty
+- (void)showSpinner
 {
-  NSString *str = @"No channels favorited";
-  NSDictionary *attrs = @{NSFontAttributeName: [UIFont italicSystemFontOfSize:16.0f]};
-  
-  return [[NSAttributedString alloc] initWithString:str
-                                         attributes:attrs];
+  self.spinner.frame = self.view.bounds;
+  [self.view addSubview:self.spinner];
+  [self.spinner startAnimating];
+}
+
+- (void)hideSpinner
+{
+  [self.spinner removeFromSuperview];
+  [self.spinner stopAnimating];
 }
 
 @end

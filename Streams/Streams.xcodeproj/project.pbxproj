@@ -39,6 +39,8 @@
 		BFD2B4E018C43A2E0086496C /* v3_channels_sing_sing.json in Resources */ = {isa = PBXBuildFile; fileRef = BFD2B48A18C41DA60086496C /* v3_channels_sing_sing.json */; };
 		BFD2B4E318C43C290086496C /* RRTwitchApiNetworkSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E218C43C290086496C /* RRTwitchApiNetworkSource.m */; };
 		BFD2B4E418C43C290086496C /* RRTwitchApiNetworkSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E218C43C290086496C /* RRTwitchApiNetworkSource.m */; };
+		BFD2B4E718C447970086496C /* RRChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E618C447970086496C /* RRChannelCell.m */; };
+		BFD2B4EA18C4502B0086496C /* RREmptyChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E918C4502B0086496C /* RREmptyChannelCell.m */; };
 		C0CEBC825E024BF498D244C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E950554FEE413C9C0FFDEA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,10 @@
 		BFD2B4A618C429C20086496C /* RRTwitchApiWorkerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRTwitchApiWorkerTest.m; path = Classes/RRTwitchApiWorkerTest.m; sourceTree = "<group>"; };
 		BFD2B4E118C43C290086496C /* RRTwitchApiNetworkSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRTwitchApiNetworkSource.h; path = Classes/RRTwitchApiNetworkSource.h; sourceTree = "<group>"; };
 		BFD2B4E218C43C290086496C /* RRTwitchApiNetworkSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRTwitchApiNetworkSource.m; path = Classes/RRTwitchApiNetworkSource.m; sourceTree = "<group>"; };
+		BFD2B4E518C447970086496C /* RRChannelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRChannelCell.h; path = Classes/RRChannelCell.h; sourceTree = "<group>"; };
+		BFD2B4E618C447970086496C /* RRChannelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRChannelCell.m; path = Classes/RRChannelCell.m; sourceTree = "<group>"; };
+		BFD2B4E818C4502A0086496C /* RREmptyChannelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RREmptyChannelCell.h; path = Classes/RREmptyChannelCell.h; sourceTree = "<group>"; };
+		BFD2B4E918C4502B0086496C /* RREmptyChannelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RREmptyChannelCell.m; path = Classes/RREmptyChannelCell.m; sourceTree = "<group>"; };
 		D9E950554FEE413C9C0FFDEA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -230,6 +236,10 @@
 			children = (
 				BFD2B47818C2E0D80086496C /* RRChannel.h */,
 				BFD2B47918C2E0D80086496C /* RRChannel.m */,
+				BFD2B4E518C447970086496C /* RRChannelCell.h */,
+				BFD2B4E618C447970086496C /* RRChannelCell.m */,
+				BFD2B4E818C4502A0086496C /* RREmptyChannelCell.h */,
+				BFD2B4E918C4502B0086496C /* RREmptyChannelCell.m */,
 			);
 			name = Channel;
 			sourceTree = "<group>";
@@ -471,8 +481,10 @@
 				BFD2B44818C2CB780086496C /* main.m in Sources */,
 				BFD2B46D18C2CC430086496C /* RRMainViewController.m in Sources */,
 				BFD2B49318C41E020086496C /* RRTwitchApiWorker.m in Sources */,
+				BFD2B4EA18C4502B0086496C /* RREmptyChannelCell.m in Sources */,
 				BFD2B47A18C2E0D80086496C /* RRChannel.m in Sources */,
 				BFD2B48618C3D5900086496C /* RRUser.m in Sources */,
+				BFD2B4E718C447970086496C /* RRChannelCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

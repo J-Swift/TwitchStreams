@@ -53,7 +53,10 @@
           if ( parseError )
             onCompletionBlock(nil, parseError);
           else
-            onCompletionBlock([innerSelf channelFromJson:json], nil);
+          {
+            RRChannel *channel = [innerSelf channelFromJson:json];
+            onCompletionBlock(channel, nil);
+          }
         });
       }
     };
@@ -62,6 +65,8 @@
   }
 }
 
+
+// TODO: break parsing out into separate class?
 - (RRChannel *)channelFromJson:(NSDictionary *)json
 {
   return [RRChannel channelWithName:json[@"name"]

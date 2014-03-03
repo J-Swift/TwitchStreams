@@ -32,6 +32,7 @@
 
 - (void)addChannelToFavorites:(RRChannel *)channel
 {
+  NSParameterAssert(channel);
   if ( ![_favoriteChannelsStore containsObject:channel] )
     [_favoriteChannelsStore addObject:channel];
 }

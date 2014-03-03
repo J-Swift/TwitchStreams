@@ -31,6 +31,7 @@ static NSString * const kApiBasePath = @"https://api.twitch.tv/kraken";
 - (void)handleRequestWithUrlPath:(NSString *)urlPath onCompletion:(TwitchApiSourceCompletionBlock)onCompletionBlock
 {
   [[[self defaultSession] dataTaskWithURL:[NSURL URLWithString:urlPath] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    // TODO: handle channel not found (code 422)
     onCompletionBlock(data, error);
   }] resume];
 }
