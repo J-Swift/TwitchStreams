@@ -41,15 +41,20 @@
       __typeof(self)innerSelf = wkSelf;
       
       if ( error )
-        onCompletionBlock(nil, error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+          onCompletionBlock(nil, error);
+        });
       else
       {
         NSError *parseError;
         id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-        if ( parseError )
-          onCompletionBlock(nil, parseError);
-        else
-          onCompletionBlock([innerSelf channelFromJson:json], nil);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+          if ( parseError )
+            onCompletionBlock(nil, parseError);
+          else
+            onCompletionBlock([innerSelf channelFromJson:json], nil);
+        });
       }
     };
     
