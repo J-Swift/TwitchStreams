@@ -17,6 +17,7 @@ typedef void (^TwitchApiWorkerCompletionBlock)(RRChannel *channel, NSError *erro
 
 @property (nonatomic, readonly) id<RRTwitchApiSource>apiSource;
 
+// Designated initializer.
 - (instancetype)initWithApiSource:(id<RRTwitchApiSource>)apiSource;
 
 - (void)getChannel:(NSString *)name onCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock;

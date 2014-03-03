@@ -7,6 +7,7 @@
 //
 
 #import "RRTwitchApiWorker.h"
+#import "RRTwitchApiNetworkSource.h"
 
 #import "RRChannel.h"
 
@@ -17,6 +18,11 @@
 @end
 
 @implementation RRTwitchApiWorker
+
+- (id)init
+{
+  return ( self = [self initWithApiSource:[RRTwitchApiNetworkSource new]] );
+}
 
 - (instancetype)initWithApiSource:(id<RRTwitchApiSource>)apiSource
 {
