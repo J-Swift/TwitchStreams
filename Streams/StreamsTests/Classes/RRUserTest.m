@@ -26,7 +26,7 @@
 
 - (void)testCanFavoriteChannels
 {
-  RRChannel *channel = [[RRChannel alloc] initWithName:@"test_channel"];
+  RRChannel *channel = [RRChannel channelWithName:@"test_channel" imagePath:nil lastUpdateTime:nil];
   RRUser *user = [RRUser currentUser];
   [user addChannelToFavorites:channel];
   
@@ -38,8 +38,8 @@
 
 - (void)testCantFavoriteAlreadyFavoritedChannels
 {
-  RRChannel *channel1 = [[RRChannel alloc] initWithName:@"test_channel_1"];
-  RRChannel *channel2 = [[RRChannel alloc] initWithName:@"test_channel_2"];
+  RRChannel *channel1 = [RRChannel channelWithName:@"test_channel_1" imagePath:nil lastUpdateTime:nil];
+  RRChannel *channel2 = [RRChannel channelWithName:@"test_channel_2" imagePath:nil lastUpdateTime:nil];
   RRUser *user = [RRUser currentUser];
   
   XCTAssertEqual([[user favoriteChannels] count], 0U,

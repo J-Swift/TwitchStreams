@@ -10,24 +10,38 @@
 
 #import "RRChannel.h"
 
+static NSString * const kValidName = @"fake_channel_name";
+static NSString * const kValidImagePath = @"http://placekitten.com/g/300/300";
+static NSDate * kValidUpdateTime = nil;
+
+#define CHANNEL_WITH_NAME(name) [RRChannel channelWithName:name imagePath:kValidImagePath lastUpdateTime:kValidUpdateTime]
+
 @interface RRChannelTest : XCTestCase
 
 @end
 
 @implementation RRChannelTest
 
-- (void)testInitWithName
++ (void)initialize
 {
-  NSString *channelName = @"fake_channel_name";
-  RRChannel *channel = [[RRChannel alloc] initWithName:channelName];
-  XCTAssertEqualObjects( channel.name, channelName );
+  if ( !kValidUpdateTime )
+    kValidUpdateTime = [NSDate new];
+}
+
+- (void)testInitialization
+{
+  RRChannel *channel = CHANNEL_WITH_NAME(kValidName);
+  
+  XCTAssertTrue([channel.name isEqual:kValidName] &&
+                [channel.imagePath isEqual:kValidImagePath] &&
+                [channel.lastUpdateTime isEqual:kValidUpdateTime]);
 }
 
 - (void)testNameIsRequiredAndMustNotBeBlank
 {
-  XCTAssertThrows( [[RRChannel alloc] initWithName:nil] );
-  XCTAssertThrows( [[RRChannel alloc] initWithName:@""] );
-  XCTAssertNoThrow( [[RRChannel alloc] initWithName:@"a"] );
+  XCTAssertThrows( CHANNEL_WITH_NAME(nil) );
+  XCTAssertThrows( CHANNEL_WITH_NAME(@"") );
+  XCTAssertNoThrow( CHANNEL_WITH_NAME(@"a") );
 }
 
 - (void)testCantCallDefaultInit
@@ -37,9 +51,8 @@
 
 - (void)testNameEqualityIsChannelEquality
 {
-  NSString *channelName = @"fake_channel_name";
-  RRChannel *channel1 = [[RRChannel alloc] initWithName:channelName];
-  RRChannel *channel2 = [[RRChannel alloc] initWithName:channelName];
+  RRChannel *channel1 = CHANNEL_WITH_NAME(kValidName);
+  RRChannel *channel2 = CHANNEL_WITH_NAME(kValidName);
   XCTAssertFalse(channel1 == channel2,
                  @"pointer inequality");
   XCTAssertTrue([channel1 isEqual:channel2],

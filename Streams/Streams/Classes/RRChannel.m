@@ -10,22 +10,31 @@
 
 @interface RRChannel ()
 
-@property (nonatomic, readwrite) NSString *name;
+- (instancetype)initWithName:(NSString *)name imagePath:(NSString *)imagePath lastUpdateTime:(NSDate *)lastUpdateTime;
 
 @end
 
 @implementation RRChannel
 
-- (id)init
++ (instancetype)channelWithName:(NSString *)name imagePath:(NSString *)imagePath lastUpdateTime:(NSDate *)lastUpdateTime
 {
-  return [self initWithName:nil];
+  return [[[self class] alloc] initWithName:name imagePath:imagePath lastUpdateTime:lastUpdateTime];
 }
 
-- (instancetype)initWithName:(NSString *)name
+- (id)init
+{
+  return [self initWithName:nil imagePath:nil lastUpdateTime:nil];
+}
+
+- (instancetype)initWithName:(NSString *)name imagePath:(NSString *)imagePath lastUpdateTime:(NSDate *)lastUpdateTime;
 {
   NSParameterAssert([name length]);
   if ( self = [super init] )
+  {
     self.name = name;
+    self.imagePath = imagePath;
+    self.lastUpdateTime = ( lastUpdateTime ? lastUpdateTime : [NSDate date] );
+  }
   
   return self;
 }
@@ -34,6 +43,18 @@
 {
   if ( ![_name isEqualToString:name] )
     _name = [name copy];
+}
+
+- (void)setImagePath:(NSString *)imagePath
+{
+  if ( ![_imagePath isEqualToString:imagePath] )
+    _imagePath = [imagePath copy];
+}
+
+- (void)setLastUpdateTime:(NSDate *)lastUpdateTime
+{
+  if ( ![_lastUpdateTime isEqual:lastUpdateTime] )
+    _lastUpdateTime = lastUpdateTime;
 }
 
 #pragma mark - Overrides

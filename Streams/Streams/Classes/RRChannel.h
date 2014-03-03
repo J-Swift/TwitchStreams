@@ -11,8 +11,10 @@
 @interface RRChannel : NSObject
 
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *imagePath;
+@property (nonatomic, readonly) NSDate *lastUpdateTime;
 
 // Designated initializer
-- (instancetype)initWithName:(NSString *)name;
++ (instancetype)channelWithName:(NSString *)name imagePath:(NSString *)imagePath lastUpdateTime:(NSDate *)lastUpdateTime;
 
 @end

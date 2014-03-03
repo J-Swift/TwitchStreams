@@ -70,7 +70,7 @@
   if ( ![alertView cancelButtonIndex] == buttonIndex )
   {
     NSString *channelName = [[alertView textFieldAtIndex:0] text];
-    [self.currentUser addChannelToFavorites:[[RRChannel alloc] initWithName:channelName]];
+    [self.currentUser addChannelToFavorites:[RRChannel channelWithName:channelName imagePath:nil lastUpdateTime:[NSDate date]]];
     [((UITableView *)self.view) reloadData];
   }
 }
