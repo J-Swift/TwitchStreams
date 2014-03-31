@@ -49,7 +49,6 @@
   tableView.tableHeaderView = header;
   tableView.dataSource = self;
   tableView.delegate = self;
-  tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0); // iOS 7
   
   self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
   self.spinner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
