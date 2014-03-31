@@ -18,6 +18,11 @@ static NSString * const kApiVersion = @"v3";
                      onCompletion:onCompletionBlock];
 }
 
+- (void)getRecentVideosForChannelNamed:(NSString *)channelName onCompletion:(TwitchApiSourceCompletionBlock)onCompletionBlock
+{
+  [self handleRequestWithFilepath:[self urlPathForRecentVideosWithChannelName:channelName]
+                     onCompletion:onCompletionBlock];
+}
 
 #pragma mark - Filepath Helpers
 
@@ -26,6 +31,15 @@ static NSString * const kApiVersion = @"v3";
   NSString *fileName = [@[kApiVersion,
                           @"channels",
                           name] componentsJoinedByString:@"_"];
+  return [[NSBundle mainBundle] pathForResource:fileName
+                                         ofType:@"json"];
+}
+
+- (NSString *)urlPathForRecentVideosWithChannelName:(NSString *)channelName
+{
+  NSString *fileName = [@[kApiVersion,
+                          @"videos",
+                          channelName] componentsJoinedByString:@"_"];
   return [[NSBundle mainBundle] pathForResource:fileName
                                          ofType:@"json"];
 }

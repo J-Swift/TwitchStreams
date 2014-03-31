@@ -1,0 +1,209 @@
+{
+  "videos": [
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a506519800"
+      },
+      "views": 3367,
+      "url": "http://www.twitch.tv/sing_sing/b/506519800",
+      "title": "KASTERVARNIA 2 ; LORDS OF SAHDSWSOS",
+      "description": null,
+      "broadcast_id": 8675204208,
+      "_id": "a506519800",
+      "recorded_at": "2014-02-26T13:39:34Z",
+      "game": "Castlevania",
+      "length": 42606,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-506519800-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a504386350"
+      },
+      "views": 13402,
+      "url": "http://www.twitch.tv/sing_sing/b/504386350",
+      "title": "DOTE 2 ",
+      "description": null,
+      "broadcast_id": 8588513376,
+      "_id": "a504386350",
+      "recorded_at": "2014-02-18T09:45:33Z",
+      "game": "Dota 2",
+      "length": 21837,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-504386350-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a504143693"
+      },
+      "views": 5586,
+      "url": "http://www.twitch.tv/sing_sing/b/504143693",
+      "title": "DOTE 2 ",
+      "description": null,
+      "broadcast_id": 8578334544,
+      "_id": "a504143693",
+      "recorded_at": "2014-02-17T13:45:12Z",
+      "game": "Dota 2",
+      "length": 8086,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-504143693-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a499606649"
+      },
+      "views": 12086,
+      "url": "http://www.twitch.tv/sing_sing/b/499606649",
+      "title": "DOTE 2 ",
+      "description": null,
+      "broadcast_id": 8395283424,
+      "_id": "a499606649",
+      "recorded_at": "2014-01-31T10:22:58Z",
+      "game": "Dota 2",
+      "length": 17898,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-499606649-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a499475540"
+      },
+      "views": 2715,
+      "url": "http://www.twitch.tv/sing_sing/b/499475540",
+      "title": "DOTE 2 ",
+      "description": null,
+      "broadcast_id": 8390853968,
+      "_id": "a499475540",
+      "recorded_at": "2014-01-30T22:19:12Z",
+      "game": "Dota 2",
+      "length": 1980,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-499475540-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a499231819"
+      },
+      "views": 7336,
+      "url": "http://www.twitch.tv/sing_sing/b/499231819",
+      "title": "DOTE 2 ",
+      "description": null,
+      "broadcast_id": 8381691328,
+      "_id": "a499231819",
+      "recorded_at": "2014-01-29T22:39:25Z",
+      "game": "Dota 2",
+      "length": 15522,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-499231819-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a497882175"
+      },
+      "views": 2823,
+      "url": "http://www.twitch.tv/sing_sing/b/497882175",
+      "title": "METAL GEAR RISING DLC ",
+      "description": null,
+      "broadcast_id": 8328488848,
+      "_id": "a497882175",
+      "recorded_at": "2014-01-24T22:48:37Z",
+      "game": "Metal Gear Rising: Revengeance",
+      "length": 19186,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-497882175-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a497352883"
+      },
+      "views": 34373,
+      "url": "http://www.twitch.tv/sing_sing/b/497352883",
+      "title": "1500 SOLO Q MMR PLS NO FLAM IN CHET ",
+      "description": null,
+      "broadcast_id": 8307606064,
+      "_id": "a497352883",
+      "recorded_at": "2014-01-22T21:20:45Z",
+      "game": "Dota 2",
+      "length": 44497,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-497352883-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a497105964"
+      },
+      "views": 6317,
+      "url": "http://www.twitch.tv/sing_sing/b/497105964",
+      "title": "1500 SOLO Q MMR PLS NO FLAM IN CHET ",
+      "description": null,
+      "broadcast_id": 8298136032,
+      "_id": "a497105964",
+      "recorded_at": "2014-01-21T22:19:58Z",
+      "game": "Dota 2",
+      "length": 25513,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-497105964-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Sing_sing",
+        "name": "sing_sing"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/sing_sing",
+        "self": "https://api.twitch.tv/kraken/videos/a496837131"
+      },
+      "views": 11048,
+      "url": "http://www.twitch.tv/sing_sing/b/496837131",
+      "title": "NEWBIE STREAM 1200 MMR TO 6500 LETS GO",
+      "description": null,
+      "broadcast_id": 8287787248,
+      "_id": "a496837131",
+      "recorded_at": "2014-01-20T21:11:58Z",
+      "game": "Dota 2",
+      "length": 17143,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-496837131-320x240.jpg"
+    }
+  ],
+  "_links": {
+    "next": "https://api.twitch.tv/kraken/channels/sing_sing/videos?broadcasts=true&limit=10&offset=10",
+    "self": "https://api.twitch.tv/kraken/channels/sing_sing/videos?broadcasts=true&limit=10&offset=0"
+  },
+  "_total": 365
+}

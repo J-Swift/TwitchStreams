@@ -1,0 +1,209 @@
+{
+  "videos": [
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a515801664"
+      },
+      "views": 0,
+      "url": "http://www.twitch.tv/dendi/b/515801664",
+      "title": "DOTA  !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9055311696,
+      "_id": "a515801664",
+      "recorded_at": "2014-03-31T01:00:50Z",
+      "game": "Dota 2",
+      "length": 10802,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-515801664-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a515781525"
+      },
+      "views": 0,
+      "url": "http://www.twitch.tv/dendi/b/515781525",
+      "title": "DOTA  !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9054503376,
+      "_id": "a515781525",
+      "recorded_at": "2014-03-30T23:32:52Z",
+      "game": "Dota 2",
+      "length": 5187,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-515781525-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a515753227"
+      },
+      "views": 0,
+      "url": "http://www.twitch.tv/dendi/b/515753227",
+      "title": "DOTA  !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9053416656,
+      "_id": "a515753227",
+      "recorded_at": "2014-03-30T21:36:57Z",
+      "game": "Dota 2",
+      "length": 6806,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-515753227-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a515431933"
+      },
+      "views": 1784,
+      "url": "http://www.twitch.tv/dendi/b/515431933",
+      "title": "DOTA  !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9040483488,
+      "_id": "a515431933",
+      "recorded_at": "2014-03-29T22:10:43Z",
+      "game": "Dota 2",
+      "length": 6727,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-515431933-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a515332839"
+      },
+      "views": 1649,
+      "url": "http://www.twitch.tv/dendi/b/515332839",
+      "title": "DOTA  !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9035999104,
+      "_id": "a515332839",
+      "recorded_at": "2014-03-29T16:04:50Z",
+      "game": "Dota 2",
+      "length": 21923,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-515332839-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a515084809"
+      },
+      "views": 1773,
+      "url": "http://www.twitch.tv/dendi/b/515084809",
+      "title": "DOTA random mode gaming !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9026469312,
+      "_id": "a515084809",
+      "recorded_at": "2014-03-28T21:02:19Z",
+      "game": "Dota 2",
+      "length": 13622,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-515084809-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a514976594"
+      },
+      "views": 1257,
+      "url": "http://www.twitch.tv/dendi/b/514976594",
+      "title": "DOTA random mode gaming !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9021711264,
+      "_id": "a514976594",
+      "recorded_at": "2014-03-28T11:44:34Z",
+      "game": "Dota 2",
+      "length": 9439,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-514976594-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a514969764"
+      },
+      "views": 617,
+      "url": "http://www.twitch.tv/dendi/b/514969764",
+      "title": "DOTA random mode gaming !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9021427808,
+      "_id": "a514969764",
+      "recorded_at": "2014-03-28T10:39:14Z",
+      "game": "Dota 2",
+      "length": 3868,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-514969764-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a514966461"
+      },
+      "views": 105,
+      "url": "http://www.twitch.tv/dendi/b/514966461",
+      "title": "DOTA random mode gaming !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9021371296,
+      "_id": "a514966461",
+      "recorded_at": "2014-03-28T10:25:17Z",
+      "game": "Dota 2",
+      "length": 761,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-514966461-320x240.jpg"
+    },
+    {
+      "channel": {
+        "display_name": "Dendi",
+        "name": "dendi"
+      },
+      "_links": {
+        "channel": "https://api.twitch.tv/kraken/channels/dendi",
+        "self": "https://api.twitch.tv/kraken/videos/a514744267"
+      },
+      "views": 2132,
+      "url": "http://www.twitch.tv/dendi/b/514744267",
+      "title": "DOTA random mode gaming !!!  !!!!!! Dendimon",
+      "description": null,
+      "broadcast_id": 9013199440,
+      "_id": "a514744267",
+      "recorded_at": "2014-03-27T16:21:58Z",
+      "game": "Dota 2",
+      "length": 11826,
+      "preview": "http://static-cdn.jtvnw.net/jtv.thumbs/archive-514744267-320x240.jpg"
+    }
+  ],
+  "_links": {
+    "next": "https://api.twitch.tv/kraken/channels/dendi/videos?broadcasts=true&limit=10&offset=10",
+    "self": "https://api.twitch.tv/kraken/channels/dendi/videos?broadcasts=true&limit=10&offset=0"
+  },
+  "_total": 147
+}

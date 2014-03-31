@@ -8,12 +8,6 @@
 
 #import "RRChannel.h"
 
-@interface RRChannel ()
-
-- (instancetype)initWithName:(NSString *)name imagePath:(NSString *)imagePath lastUpdateTime:(NSDate *)lastUpdateTime;
-
-@end
-
 @implementation RRChannel
 
 + (instancetype)channelWithName:(NSString *)name imagePath:(NSString *)imagePath lastUpdateTime:(NSDate *)lastUpdateTime

@@ -19,11 +19,22 @@ static NSString * const kApiBasePath = @"https://api.twitch.tv/kraken";
                      onCompletion:onCompletionBlock];
 }
 
+- (void)getRecentVideosForChannelNamed:(NSString *)channelName onCompletion:(TwitchApiSourceCompletionBlock)onCompletionBlock
+{
+  [self handleRequestWithUrlPath:[self urlPathForRecentVideosWithChannelName:channelName]
+                    onCompletion:onCompletionBlock];
+}
+
 #pragma mark - Filepath Helpers
 
 - (NSString *)urlPathForChannelWithName:(NSString *)name
 {
   return [NSString stringWithFormat:@"%@/channels/%@", kApiBasePath, name];
+}
+
+- (NSString *)urlPathForRecentVideosWithChannelName:(NSString *)channelName
+{
+    return [NSString stringWithFormat:@"%@/channels/%@/videos?broadcasts=true", kApiBasePath, channelName];
 }
 
 #pragma mark - Helpers

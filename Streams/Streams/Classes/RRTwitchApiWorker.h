@@ -6,12 +6,10 @@
 //  Copyright (c) 2014 RadReichley Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "RRTwitchApiSource.h"
 @class RRChannel;
 
-typedef void (^TwitchApiWorkerCompletionBlock)(RRChannel *channel, NSError *error);
+typedef void (^TwitchApiWorkerCompletionBlock)(id result, NSError *error);
 
 @interface RRTwitchApiWorker : NSObject
 
@@ -20,6 +18,10 @@ typedef void (^TwitchApiWorkerCompletionBlock)(RRChannel *channel, NSError *erro
 // Designated initializer.
 - (instancetype)initWithApiSource:(id<RRTwitchApiSource>)apiSource;
 
+// result = RRChannel
 - (void)getChannel:(NSString *)name onCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock;
+
+// result = NSArray[RRVideo]
+- (void)getRecentVideosForChannel:(RRChannel *)channel onCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock;
 
 @end

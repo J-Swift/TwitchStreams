@@ -7,6 +7,7 @@
 //
 
 #import "RRMainViewController.h"
+#import "RRVideosTableViewController.h"
 
 #import "RRChannelCell.h"
 #import "RREmptyChannelCell.h"
@@ -14,7 +15,7 @@
 #import "RRUser.h"
 #import "RRTwitchApiWorker.h"
 
-@interface RRMainViewController () <UITableViewDataSource, UIAlertViewDelegate>
+@interface RRMainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
@@ -47,12 +48,36 @@
     forCellReuseIdentifier:[[RRChannelCell class] description]];
   tableView.tableHeaderView = header;
   tableView.dataSource = self;
+  tableView.delegate = self;
   tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0); // iOS 7
   
   self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
   self.spinner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
   
   self.view = tableView;
+}
+
+- (UITableView *)tableView
+{
+  return (UITableView *)self.view;
+}
+
+- (NSString *)title
+{
+  return @"Channels";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [self.navigationController setNavigationBarHidden:YES animated:animated];
+  [[self tableView] deselectRowAtIndexPath:[self tableView].indexPathForSelectedRow animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 #pragma mark - UITableViewDataSource
@@ -72,6 +97,34 @@
     cell.channel = [self channelForIndexPath:indexPath];
     return cell;
   }
+}
+
+#pragma mark - UITableViewDelegate
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  // Don't allow selection of empty cell
+  if ( [[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[RREmptyChannelCell class]] )
+    return NO;
+  
+  return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  [self showSpinner];
+  
+  RRChannel *channel = [self channelForIndexPath:indexPath];
+  [self.apiWorker getRecentVideosForChannel:(RRChannel *)channel onCompletion:^(id result, NSError *error) {
+    [self hideSpinner];
+    
+    // TODO: handle error
+    if ( !error )
+    {
+      RRVideosTableViewController *videosTVC = [[RRVideosTableViewController alloc] initWithVideos:result];
+      [self.navigationController pushViewController:videosTVC animated:YES];
+    }
+  }];
 }
 
 #pragma mark - UIAlertViewDelegate
