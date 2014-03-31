@@ -1,1 +1,35 @@
-{"mature":false,"abuse_reported":null,"status":"TIME FOR SOME DOTA !!!  !!!!!! Dendimon","display_name":"Dendi","game":"Dota 2","delay":0,"_id":39176440,"name":"dendi","created_at":"2013-01-09T03:28:18Z","updated_at":"2014-02-28T21:36:08Z","primary_team_name":"navi","primary_team_display_name":"Natus Vincere","logo":"http://static-cdn.jtvnw.net/jtv_user_pictures/dendi-profile_image-50b7d29881a9a65f-300x300.jpeg","banner":"http://static-cdn.jtvnw.net/jtv_user_pictures/dendi-channel_header_image-8e62ee2f383a3f18-640x125.jpeg","video_banner":"http://static-cdn.jtvnw.net/jtv_user_pictures/dendi-channel_offline_image-f2ddc1d813292a2b-640x360.jpeg","background":null,"profile_banner":null,"profile_banner_background_color":null,"url":"http://www.twitch.tv/dendi","views":19355955,"followers":85140,"_links":{"self":"https://api.twitch.tv/kraken/channels/dendi","follows":"https://api.twitch.tv/kraken/channels/dendi/follows","commercial":"https://api.twitch.tv/kraken/channels/dendi/commercial","stream_key":"https://api.twitch.tv/kraken/channels/dendi/stream_key","chat":"https://api.twitch.tv/kraken/chat/dendi","features":"https://api.twitch.tv/kraken/channels/dendi/features","subscriptions":"https://api.twitch.tv/kraken/channels/dendi/subscriptions","editors":"https://api.twitch.tv/kraken/channels/dendi/editors","teams":"https://api.twitch.tv/kraken/channels/dendi/teams","videos":"https://api.twitch.tv/kraken/channels/dendi/videos"}}
+{
+  "_links": {
+    "videos": "https://api.twitch.tv/kraken/channels/dendi/videos",
+    "teams": "https://api.twitch.tv/kraken/channels/dendi/teams",
+    "self": "https://api.twitch.tv/kraken/channels/dendi",
+    "follows": "https://api.twitch.tv/kraken/channels/dendi/follows",
+    "commercial": "https://api.twitch.tv/kraken/channels/dendi/commercial",
+    "stream_key": "https://api.twitch.tv/kraken/channels/dendi/stream_key",
+    "chat": "https://api.twitch.tv/kraken/chat/dendi",
+    "features": "https://api.twitch.tv/kraken/channels/dendi/features",
+    "subscriptions": "https://api.twitch.tv/kraken/channels/dendi/subscriptions",
+    "editors": "https://api.twitch.tv/kraken/channels/dendi/editors"
+  },
+  "followers": 85140,
+  "views": 19355955,
+  "url": "http://www.twitch.tv/dendi",
+  "profile_banner_background_color": null,
+  "profile_banner": null,
+  "name": "dendi",
+  "_id": 39176440,
+  "delay": 0,
+  "game": "Dota 2",
+  "display_name": "Dendi",
+  "status": "TIME FOR SOME DOTA !!!  !!!!!! Dendimon",
+  "abuse_reported": null,
+  "mature": false,
+  "created_at": "2013-01-09T03:28:18Z",
+  "updated_at": "2014-02-28T21:36:08Z",
+  "primary_team_name": "navi",
+  "primary_team_display_name": "Natus Vincere",
+  "logo": "http://static-cdn.jtvnw.net/jtv_user_pictures/dendi-profile_image-50b7d29881a9a65f-300x300.jpeg",
+  "banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/dendi-channel_header_image-8e62ee2f383a3f18-640x125.jpeg",
+  "video_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/dendi-channel_offline_image-f2ddc1d813292a2b-640x360.jpeg",
+  "background": null
+}

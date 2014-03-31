@@ -1,1 +1,35 @@
-{"mature":true,"abuse_reported":null,"status":"KASTERVARNIA 2 ; LORDS OF SAHDSWSOS","display_name":"Sing_sing","game":"Castlevania","delay":0,"_id":21390470,"name":"sing_sing","created_at":"2011-03-28T14:51:57Z","updated_at":"2014-03-02T11:12:46Z","primary_team_name":"cloud9","primary_team_display_name":"Cloud 9 HyperX","logo":"http://static-cdn.jtvnw.net/jtv_user_pictures/sing_sing-profile_image-260bffe71ab9475b-300x300.jpeg","banner":"http://static-cdn.jtvnw.net/jtv_user_pictures/sing_sing-channel_header_image-b59c20a951432198-640x125.png","video_banner":null,"background":"http://static-cdn.jtvnw.net/jtv_user_pictures/sing_sing-background_image-34a9476ba6deeb67.png","profile_banner":null,"profile_banner_background_color":null,"url":"http://www.twitch.tv/sing_sing","views":17442448,"followers":55251,"_links":{"self":"https://api.twitch.tv/kraken/channels/sing_sing","follows":"https://api.twitch.tv/kraken/channels/sing_sing/follows","commercial":"https://api.twitch.tv/kraken/channels/sing_sing/commercial","stream_key":"https://api.twitch.tv/kraken/channels/sing_sing/stream_key","chat":"https://api.twitch.tv/kraken/chat/sing_sing","features":"https://api.twitch.tv/kraken/channels/sing_sing/features","subscriptions":"https://api.twitch.tv/kraken/channels/sing_sing/subscriptions","editors":"https://api.twitch.tv/kraken/channels/sing_sing/editors","teams":"https://api.twitch.tv/kraken/channels/sing_sing/teams","videos":"https://api.twitch.tv/kraken/channels/sing_sing/videos"}}
+{
+  "_links": {
+    "videos": "https://api.twitch.tv/kraken/channels/sing_sing/videos",
+    "teams": "https://api.twitch.tv/kraken/channels/sing_sing/teams",
+    "self": "https://api.twitch.tv/kraken/channels/sing_sing",
+    "follows": "https://api.twitch.tv/kraken/channels/sing_sing/follows",
+    "commercial": "https://api.twitch.tv/kraken/channels/sing_sing/commercial",
+    "stream_key": "https://api.twitch.tv/kraken/channels/sing_sing/stream_key",
+    "chat": "https://api.twitch.tv/kraken/chat/sing_sing",
+    "features": "https://api.twitch.tv/kraken/channels/sing_sing/features",
+    "subscriptions": "https://api.twitch.tv/kraken/channels/sing_sing/subscriptions",
+    "editors": "https://api.twitch.tv/kraken/channels/sing_sing/editors"
+  },
+  "followers": 55251,
+  "views": 17442448,
+  "url": "http://www.twitch.tv/sing_sing",
+  "profile_banner_background_color": null,
+  "profile_banner": null,
+  "name": "sing_sing",
+  "_id": 21390470,
+  "delay": 0,
+  "game": "Castlevania",
+  "display_name": "Sing_sing",
+  "status": "KASTERVARNIA 2 ; LORDS OF SAHDSWSOS",
+  "abuse_reported": null,
+  "mature": true,
+  "created_at": "2011-03-28T14:51:57Z",
+  "updated_at": "2014-03-02T11:12:46Z",
+  "primary_team_name": "cloud9",
+  "primary_team_display_name": "Cloud 9 HyperX",
+  "logo": "http://static-cdn.jtvnw.net/jtv_user_pictures/sing_sing-profile_image-260bffe71ab9475b-300x300.jpeg",
+  "banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/sing_sing-channel_header_image-b59c20a951432198-640x125.png",
+  "video_banner": null,
+  "background": "http://static-cdn.jtvnw.net/jtv_user_pictures/sing_sing-background_image-34a9476ba6deeb67.png"
+}
