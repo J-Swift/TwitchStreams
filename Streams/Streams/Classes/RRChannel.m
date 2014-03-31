@@ -31,30 +31,12 @@
   NSParameterAssert([name length]);
   if ( self = [super init] )
   {
-    self.name = name;
-    self.imagePath = imagePath;
-    self.lastUpdateTime = ( lastUpdateTime ? lastUpdateTime : [NSDate date] );
+    _name = [name copy];
+    _imagePath = [imagePath copy];
+    _lastUpdateTime = ( lastUpdateTime ? lastUpdateTime : [NSDate date] );
   }
   
   return self;
-}
-
-- (void)setName:(NSString *)name
-{
-  if ( ![_name isEqualToString:name] )
-    _name = [name copy];
-}
-
-- (void)setImagePath:(NSString *)imagePath
-{
-  if ( ![_imagePath isEqualToString:imagePath] )
-    _imagePath = [imagePath copy];
-}
-
-- (void)setLastUpdateTime:(NSDate *)lastUpdateTime
-{
-  if ( ![_lastUpdateTime isEqual:lastUpdateTime] )
-    _lastUpdateTime = lastUpdateTime;
 }
 
 #pragma mark - Overrides
