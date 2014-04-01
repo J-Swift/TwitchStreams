@@ -11,6 +11,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
+static const CGFloat kImageInset = 3;
 static const CGFloat kImageMarginRight = 5;
 static const CGFloat kLabelMarginTop = 2;
 static const CGFloat kLabelMarginMid = 0;
@@ -35,6 +36,8 @@ static const CGFloat kLabelMarginMid = 0;
     
     self.iv = [UIImageView new];
     self.iv.contentMode = UIViewContentModeScaleAspectFill;
+    self.iv.layer.borderColor = [UIColor blackColor].CGColor;
+    self.iv.layer.borderWidth = 1.0f;
     [self.contentView addSubview:self.iv];
     
     self.nameLabel = [UILabel new];
@@ -53,12 +56,10 @@ static const CGFloat kLabelMarginMid = 0;
 {
   [super layoutSubviews];
   
-  CGRect frame;
+  CGRect frame = CGRectZero;
   
-  CGFloat imageHeight = self.bounds.size.height;
-  frame = self.iv.frame;
-  frame.size = CGSizeMake(imageHeight, imageHeight);
-  self.iv.frame = frame;
+  frame.size = CGSizeMake(self.bounds.size.height, self.bounds.size.height);
+  self.iv.frame = CGRectInset(frame, kImageInset, kImageInset);
   
   CGFloat labelWidth = self.bounds.size.width - self.iv.frame.size.width - kImageMarginRight;
   CGFloat labelLeft = CGRectGetMaxX(self.iv.frame) + kImageMarginRight;
@@ -83,7 +84,8 @@ static const CGFloat kLabelMarginMid = 0;
   {
     _channel = channel;
     
-    [self.iv setImageWithURL:[NSURL URLWithString:channel.imagePath]];
+    [self.iv setImageWithURL:[NSURL URLWithString:channel.imagePath]
+            placeholderImage:[UIImage imageNamed:@"placeholder_person"]];
     self.nameLabel.text = channel.name;
     self.updatedAtLabel.text = [NSString stringWithFormat:@"Last Updated: %@ ago", [self humanReadableTimeSince:channel.lastUpdateTime]];
     [self setNeedsLayout];
