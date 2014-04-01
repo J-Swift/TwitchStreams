@@ -7,7 +7,7 @@
 //
 
 #import "RRMainViewController.h"
-#import "RRVideosTableViewController.h"
+#import "RRVideosViewController.h"
 
 #import "RRChannelCell.h"
 #import "RREmptyChannelCell.h"
@@ -120,7 +120,7 @@
     // TODO: handle error
     if ( !error )
     {
-      RRVideosTableViewController *videosTVC = [[RRVideosTableViewController alloc] initWithVideos:result];
+      RRVideosViewController *videosTVC = [[RRVideosViewController alloc] initWithVideos:result];
       [self.navigationController pushViewController:videosTVC animated:YES];
     }
   }];

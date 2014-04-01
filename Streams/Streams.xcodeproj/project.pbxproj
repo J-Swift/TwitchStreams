@@ -14,7 +14,7 @@
 		BF6BA06918C596C600A9DDDD /* RRStubChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6BA06818C596C600A9DDDD /* RRStubChannel.m */; };
 		BF85623C18E9256E001E0011 /* v3_videos_dendi.json in Resources */ = {isa = PBXBuildFile; fileRef = BF85623A18E9256E001E0011 /* v3_videos_dendi.json */; };
 		BF85623D18E9256E001E0011 /* v3_videos_sing_sing.json in Resources */ = {isa = PBXBuildFile; fileRef = BF85623B18E9256E001E0011 /* v3_videos_sing_sing.json */; };
-		BF85624018E92F6C001E0011 /* RRVideosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF85623F18E92F6C001E0011 /* RRVideosTableViewController.m */; };
+		BF85624018E92F6C001E0011 /* RRVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF85623F18E92F6C001E0011 /* RRVideosViewController.m */; };
 		BF85624318E93046001E0011 /* RRVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF85624218E93046001E0011 /* RRVideoCell.m */; };
 		BFD2B43C18C2CB770086496C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2B43B18C2CB770086496C /* Foundation.framework */; };
 		BFD2B43E18C2CB770086496C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2B43D18C2CB770086496C /* CoreGraphics.framework */; };
@@ -71,8 +71,8 @@
 		BF6BA06818C596C600A9DDDD /* RRStubChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRStubChannel.m; path = Classes/RRStubChannel.m; sourceTree = "<group>"; };
 		BF85623A18E9256E001E0011 /* v3_videos_dendi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = v3_videos_dendi.json; path = fixtures/v3_videos_dendi.json; sourceTree = "<group>"; };
 		BF85623B18E9256E001E0011 /* v3_videos_sing_sing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = v3_videos_sing_sing.json; path = fixtures/v3_videos_sing_sing.json; sourceTree = "<group>"; };
-		BF85623E18E92F6C001E0011 /* RRVideosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRVideosTableViewController.h; path = Classes/RRVideosTableViewController.h; sourceTree = "<group>"; };
-		BF85623F18E92F6C001E0011 /* RRVideosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRVideosTableViewController.m; path = Classes/RRVideosTableViewController.m; sourceTree = "<group>"; };
+		BF85623E18E92F6C001E0011 /* RRVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRVideosViewController.h; path = Classes/RRVideosViewController.h; sourceTree = "<group>"; };
+		BF85623F18E92F6C001E0011 /* RRVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRVideosViewController.m; path = Classes/RRVideosViewController.m; sourceTree = "<group>"; };
 		BF85624118E93046001E0011 /* RRVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRVideoCell.h; path = Classes/RRVideoCell.h; sourceTree = "<group>"; };
 		BF85624218E93046001E0011 /* RRVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRVideoCell.m; path = Classes/RRVideoCell.m; sourceTree = "<group>"; };
 		BFD2B43818C2CB770086496C /* Streams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streams.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,8 +159,8 @@
 				BF6BA06418C5952C00A9DDDD /* RRVideo.m */,
 				BF85624118E93046001E0011 /* RRVideoCell.h */,
 				BF85624218E93046001E0011 /* RRVideoCell.m */,
-				BF85623E18E92F6C001E0011 /* RRVideosTableViewController.h */,
-				BF85623F18E92F6C001E0011 /* RRVideosTableViewController.m */,
+				BF85623E18E92F6C001E0011 /* RRVideosViewController.h */,
+				BF85623F18E92F6C001E0011 /* RRVideosViewController.m */,
 			);
 			name = Video;
 			sourceTree = "<group>";
@@ -528,7 +528,7 @@
 				BFD2B44C18C2CB780086496C /* RRAppDelegate.m in Sources */,
 				BFD2B44818C2CB780086496C /* main.m in Sources */,
 				BFD2B46D18C2CC430086496C /* RRMainViewController.m in Sources */,
-				BF85624018E92F6C001E0011 /* RRVideosTableViewController.m in Sources */,
+				BF85624018E92F6C001E0011 /* RRVideosViewController.m in Sources */,
 				BFD2B49318C41E020086496C /* RRTwitchApiWorker.m in Sources */,
 				BFD2B4EA18C4502B0086496C /* RREmptyChannelCell.m in Sources */,
 				BFD2B47A18C2E0D80086496C /* RRChannel.m in Sources */,
