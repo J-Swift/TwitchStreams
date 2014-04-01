@@ -80,6 +80,7 @@
   __weak __typeof(self)wkSelf = self;
   return ^(NSData *data, NSError *error) {
     __typeof(self)innerSelf = wkSelf;
+    // Check for http error
     if ( error )
       dispatch_async(dispatch_get_main_queue(), ^{
         onCompletionBlock(nil, error);
@@ -90,6 +91,7 @@
       id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
       
       dispatch_async(dispatch_get_main_queue(), ^{
+        // Check for JSON deserialization error
         if ( parseError )
           onCompletionBlock(nil, parseError);
         else
