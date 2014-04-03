@@ -10,26 +10,18 @@
 
 @implementation RREmptyChannelCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithFrame:(CGRect)frame
 {
-  if ( self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] )
+  if ( self = [super initWithFrame:frame] )
   {
-    self.textLabel.text = @"No channels favorited";
-    self.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    UILabel *label = [UILabel new];
+    label.text = @"No channels favorited";
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self.contentView addSubview:label];
   }
   
   return self;
-}
-
-#pragma mark - Helpers
-
-- (NSAttributedString *)attributedTextForEmpty
-{
-  NSString *str = @"No channels favorited";
-  NSDictionary *attrs = @{NSFontAttributeName: [UIFont italicSystemFontOfSize:16.0f]};
-  
-  return [[NSAttributedString alloc] initWithString:str
-                                         attributes:attrs];
 }
 
 @end

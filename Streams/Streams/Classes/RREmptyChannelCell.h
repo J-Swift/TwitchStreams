@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RREmptyChannelCell : UITableViewCell
+@interface RREmptyChannelCell : UICollectionViewCell
 
 @end

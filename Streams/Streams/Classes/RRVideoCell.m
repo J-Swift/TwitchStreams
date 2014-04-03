@@ -19,22 +19,13 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if ( self = [super initWithStyle:style reuseIdentifier:reuseIdentifier] )
+    if ( self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier] )
     {
       self.opaque = YES;
       self.backgroundColor = [UIColor whiteColor];
-      
-      self.nameLabel = [UILabel new];
-      self.nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-      [self.contentView addSubview:self.nameLabel];
     }
+  
     return self;
-}
-
-- (void)layoutSubviews
-{
-  [super layoutSubviews];
-  self.nameLabel.frame = self.bounds;
 }
 
 - (void)setVideo:(RRVideo *)video
@@ -43,9 +34,30 @@
   {
     _video = video;
     
-    self.nameLabel.text = video.title;
+    self.textLabel.text = video.title;
+    self.detailTextLabel.text = [NSString stringWithFormat:@"%@ ago", [self humanReadableTimeSince:video.recordedAt]];
     [self setNeedsLayout];
   }
+}
+
+#pragma mark  Helpers
+
+// TODO: hanlde pluralization better and add more gradients (weeks, months, years)
+- (NSString *)humanReadableTimeSince:(NSDate *)date
+{
+  NSTimeInterval seconds = ABS([date timeIntervalSinceNow]);
+  NSString* result = @"";
+
+  if ( seconds <= 60 )
+    result = [NSString stringWithFormat:@"%i secs", (int)(seconds + 0.5)];
+  else if ( seconds <= 3600 )
+    result = [NSString stringWithFormat:@"%i mins", (int)((seconds/60) + 0.5)];
+  else if ( seconds < (24 * 3600) )
+    result = [NSString stringWithFormat:@"%i hours", (int)((seconds/3600) + 0.5)];
+  else
+    result = [NSString stringWithFormat:@"%i days", (int)((seconds/(24 * 3600)) + 0.5)];
+
+  return result;
 }
 
 @end

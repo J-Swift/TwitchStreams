@@ -12,7 +12,6 @@
 
 @property (nonatomic, copy) void (^onSelectBlock)(RRChannelsViewController *sender, RRChannel *channel);
 
-- (void)setHeader:(UIView *)header;
 - (void)addChannel:(RRChannel *)channel;
 
 @end

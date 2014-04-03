@@ -11,7 +11,7 @@
 #import "RRChannelCell.h"
 #import "RREmptyChannelCell.h"
 
-@interface RRChannelsViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+@interface RRChannelsViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableArray *channels;
 
@@ -29,31 +29,22 @@
 
 - (void)loadView
 {
-  UITableView *tableView = [UITableView new];
-  [tableView registerClass:[RREmptyChannelCell class]
-    forCellReuseIdentifier:[[RREmptyChannelCell class] description]];
-  [tableView registerClass:[RRChannelCell class]
-    forCellReuseIdentifier:[[RRChannelCell class] description]];
-  tableView.dataSource = self;
-  tableView.delegate = self;
+  UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+  layout.itemSize = CGSizeMake(250, 50);
   
-  self.view = tableView;
+  UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+  collectionView.backgroundColor = [UIColor whiteColor];
+  [collectionView registerClass:[RRChannelCell class] forCellWithReuseIdentifier:[[RRChannelCell class] description]];
+  [collectionView registerClass:[RREmptyChannelCell class] forCellWithReuseIdentifier:[[RREmptyChannelCell class] description]];
+  collectionView.delegate = self;
+  collectionView.dataSource = self;
+  
+  self.view = collectionView;
 }
 
-- (UITableView *)tableView
+- (UICollectionView *)collectionView
 {
-  return (UITableView *)self.view;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
-  [[self tableView] deselectRowAtIndexPath:[self tableView].indexPathForSelectedRow animated:YES];
-}
-
-- (void)setHeader:(UIView *)header
-{
-  [self tableView].tableHeaderView = header;
+  return (UICollectionView *)self.view;
 }
 
 - (void)addChannel:(RRChannel *)channel
@@ -61,41 +52,41 @@
   if ( channel )
   {
     [_channels addObject:channel];
-    [[self tableView] reloadData];
+    [[self collectionView] reloadData];
   }
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
   return ( [self isEmpty] ? 1 : (NSInteger)[self.channels count] );
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   if ( [self isEmpty] )
-    return [tableView dequeueReusableCellWithIdentifier:[[RREmptyChannelCell class] description]];
+    return [collectionView dequeueReusableCellWithReuseIdentifier:[[RREmptyChannelCell class] description] forIndexPath:indexPath];
   else
   {
-    RRChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:[[RRChannelCell class] description]];
+    RRChannelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[[RRChannelCell class] description] forIndexPath:indexPath];
     cell.channel = [self channelForIndexPath:indexPath];
     return cell;
   }
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - UICollectionViewDelegateFlowLayout
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
   // Don't allow selection of empty cell
-  if ( [[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[RREmptyChannelCell class]] )
+  if ( [[collectionView cellForItemAtIndexPath:indexPath] isKindOfClass:[RREmptyChannelCell class]] )
     return NO;
   
   return YES;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
   if ( self.onSelectBlock )
     self.onSelectBlock(self, [self channelForIndexPath:indexPath] );

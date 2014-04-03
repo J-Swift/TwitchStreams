@@ -8,7 +8,7 @@
 
 @class RRChannel;
 
-@interface RRChannelCell : UITableViewCell
+@interface RRChannelCell : UICollectionViewCell
 
 @property (nonatomic, strong) RRChannel *channel;
 

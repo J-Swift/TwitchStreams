@@ -19,6 +19,8 @@ static const NSInteger kSpinnerTag = 5298713;
 
 @property (nonatomic, weak) RRChannelsViewController *channelsVC;
 
+@property (nonatomic, weak) UIView *header;
+
 @property (nonatomic, strong) RRUser *currentUser;
 @property (nonatomic, strong) RRTwitchApiWorker *apiWorker;
 
@@ -42,11 +44,14 @@ static const NSInteger kSpinnerTag = 5298713;
   self.view = [UIView new];
   
   RRChannelsViewController *channelsVC = [RRChannelsViewController new];
-  [channelsVC setHeader:[self generateTableHeader]];
   [self addChildViewController:channelsVC];
   [self.view addSubview:channelsVC.view];
   [channelsVC didMoveToParentViewController:self];
   self.channelsVC = channelsVC;
+  
+  UIView *header = [self generateTableHeader];
+  [self.view addSubview:header];
+  self.header = header;
   
   __weak __typeof(self)wkSelf = self;
   channelsVC.onSelectBlock = ^(RRChannelsViewController *sender, RRChannel *channel){
@@ -85,9 +90,15 @@ static const NSInteger kSpinnerTag = 5298713;
 - (void)viewWillLayoutSubviews
 {
   [super viewWillLayoutSubviews];
+
+  __typeof(self.header)header = self.header;
+  CGRect frame = header.frame;
+  frame.size.width = self.view.bounds.size.width;
+  header.frame = frame;
   
-  UIViewController *channelsVC = self.channelsVC;
-  channelsVC.view.frame = self.view.bounds;
+  __typeof(self.channelsVC)channelsVC = self.channelsVC;
+  frame = CGRectMake(0, CGRectGetMaxY(frame), frame.size.width, CGRectGetMaxY(self.view.bounds) - CGRectGetMaxY(frame));
+  channelsVC.view.frame = frame;
 }
 
 #pragma mark - View generators
