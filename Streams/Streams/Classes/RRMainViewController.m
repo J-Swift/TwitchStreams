@@ -154,8 +154,21 @@ static const NSInteger kSpinnerTag = 5298713;
     [self.apiWorker getChannel:channelName onCompletion:^(RRChannel *channel, NSError *error) {
       [self hideSpinner];
       
-      // TODO: handle error
-      if ( !error )
+      if ( error )
+      {
+        NSString *message;
+        switch ([error code]) {
+          case TwitchApiErrorChannelNotFound:
+            message = [NSString stringWithFormat:@"No channel named: %@", channelName];
+            break;
+          default:
+          case TwitchApiErrorUnknown:
+            message = @"An unkown error occured.";
+            break;
+        }
+        [self showAlertWithTitle:@"Error" message:message];
+      }
+      else
       {
         [self.currentUser addChannelToFavorites:channel];
         RRChannelsViewController *channelsVC = self.channelsVC;
@@ -183,6 +196,18 @@ static const NSInteger kSpinnerTag = 5298713;
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     [[self.view viewWithTag:kSpinnerTag] removeFromSuperview];
+  });
+}
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
   });
 }
 
