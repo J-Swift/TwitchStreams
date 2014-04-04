@@ -12,6 +12,7 @@
 		BF6BA06518C5952C00A9DDDD /* RRVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6BA06418C5952C00A9DDDD /* RRVideo.m */; };
 		BF6BA06618C5952C00A9DDDD /* RRVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6BA06418C5952C00A9DDDD /* RRVideo.m */; };
 		BF6BA06918C596C600A9DDDD /* RRStubChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6BA06818C596C600A9DDDD /* RRStubChannel.m */; };
+		BF74BCF718EE69D3004D79BA /* v3_channels_error_ChannelNotFound.json in Resources */ = {isa = PBXBuildFile; fileRef = BF74BCF618EE69D3004D79BA /* v3_channels_error_ChannelNotFound.json */; };
 		BF85623C18E9256E001E0011 /* v3_videos_dendi.json in Resources */ = {isa = PBXBuildFile; fileRef = BF85623A18E9256E001E0011 /* v3_videos_dendi.json */; };
 		BF85623D18E9256E001E0011 /* v3_videos_sing_sing.json in Resources */ = {isa = PBXBuildFile; fileRef = BF85623B18E9256E001E0011 /* v3_videos_sing_sing.json */; };
 		BF85624018E92F6C001E0011 /* RRVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF85623F18E92F6C001E0011 /* RRVideosViewController.m */; };
@@ -44,8 +45,6 @@
 		BFD2B49718C41E850086496C /* XCAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B49618C41E850086496C /* XCAsyncTestCase.m */; };
 		BFD2B4A118C429370086496C /* RRTwitchApiFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4A018C429370086496C /* RRTwitchApiFileSource.m */; };
 		BFD2B4A718C429C20086496C /* RRTwitchApiWorkerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4A618C429C20086496C /* RRTwitchApiWorkerTest.m */; };
-		BFD2B4DF18C43A2E0086496C /* v3_channels_dendi.json in Resources */ = {isa = PBXBuildFile; fileRef = BFD2B48918C41DA60086496C /* v3_channels_dendi.json */; };
-		BFD2B4E018C43A2E0086496C /* v3_channels_sing_sing.json in Resources */ = {isa = PBXBuildFile; fileRef = BFD2B48A18C41DA60086496C /* v3_channels_sing_sing.json */; };
 		BFD2B4E318C43C290086496C /* RRTwitchApiNetworkSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E218C43C290086496C /* RRTwitchApiNetworkSource.m */; };
 		BFD2B4E418C43C290086496C /* RRTwitchApiNetworkSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E218C43C290086496C /* RRTwitchApiNetworkSource.m */; };
 		BFD2B4E718C447970086496C /* RRChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4E618C447970086496C /* RRChannelCell.m */; };
@@ -70,6 +69,7 @@
 		BF6BA06418C5952C00A9DDDD /* RRVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRVideo.m; path = Classes/RRVideo.m; sourceTree = "<group>"; };
 		BF6BA06718C596C600A9DDDD /* RRStubChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRStubChannel.h; path = Classes/RRStubChannel.h; sourceTree = "<group>"; };
 		BF6BA06818C596C600A9DDDD /* RRStubChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRStubChannel.m; path = Classes/RRStubChannel.m; sourceTree = "<group>"; };
+		BF74BCF618EE69D3004D79BA /* v3_channels_error_ChannelNotFound.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = v3_channels_error_ChannelNotFound.json; path = fixtures/v3_channels_error_ChannelNotFound.json; sourceTree = "<group>"; };
 		BF85623A18E9256E001E0011 /* v3_videos_dendi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = v3_videos_dendi.json; path = fixtures/v3_videos_dendi.json; sourceTree = "<group>"; };
 		BF85623B18E9256E001E0011 /* v3_videos_sing_sing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = v3_videos_sing_sing.json; path = fixtures/v3_videos_sing_sing.json; sourceTree = "<group>"; };
 		BF85623E18E92F6C001E0011 /* RRVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRVideosViewController.h; path = Classes/RRVideosViewController.h; sourceTree = "<group>"; };
@@ -323,6 +323,7 @@
 			children = (
 				BF85623A18E9256E001E0011 /* v3_videos_dendi.json */,
 				BF85623B18E9256E001E0011 /* v3_videos_sing_sing.json */,
+				BF74BCF618EE69D3004D79BA /* v3_channels_error_ChannelNotFound.json */,
 				BFD2B48918C41DA60086496C /* v3_channels_dendi.json */,
 				BFD2B48A18C41DA60086496C /* v3_channels_sing_sing.json */,
 			);
@@ -441,8 +442,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD2B44618C2CB780086496C /* InfoPlist.strings in Resources */,
-				BFD2B4DF18C43A2E0086496C /* v3_channels_dendi.json in Resources */,
-				BFD2B4E018C43A2E0086496C /* v3_channels_sing_sing.json in Resources */,
 				BFD2B44E18C2CB780086496C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,9 +450,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF85623D18E9256E001E0011 /* v3_videos_sing_sing.json in Resources */,
 				BFD2B45F18C2CB780086496C /* InfoPlist.strings in Resources */,
+				BF85623D18E9256E001E0011 /* v3_videos_sing_sing.json in Resources */,
 				BF85623C18E9256E001E0011 /* v3_videos_dendi.json in Resources */,
+				BF74BCF718EE69D3004D79BA /* v3_channels_error_ChannelNotFound.json in Resources */,
 				BFD2B48C18C41DA60086496C /* v3_channels_sing_sing.json in Resources */,
 				BFD2B48B18C41DA60086496C /* v3_channels_dendi.json in Resources */,
 			);

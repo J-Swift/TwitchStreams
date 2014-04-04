@@ -1,0 +1,5 @@
+{
+  "message": "Channel 'notarealusername' is not available on Twitch",
+  "status": 422,
+  "error": "Unprocessable Entity"
+}
