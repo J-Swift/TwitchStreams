@@ -12,15 +12,30 @@ static NSString * const kApiVersion = @"v3";
 
 @implementation RRTwitchApiFileSource
 
+- (NSSet *)supportedChannels
+{
+  return [NSSet setWithObjects:@"dendi", @"sing_sing", nil];
+}
+
+- (NSSet *)supportedVideos
+{
+  return [NSSet setWithObjects:@"dendi", @"sing_sing", nil];
+}
+
 - (void)getChannelWithName:(NSString *)name onCompletion:(TwitchApiSourceCompletionBlock)onCompletionBlock
 {
-  [self handleRequestWithFilepath:[self filepathForChannelWithName:name]
-                     onCompletion:onCompletionBlock];
+  NSString *filepath = nil;
+  if ( ![[self supportedChannels] containsObject:name] )
+    filepath = [self filepathForChannelWithName:@"error_ChannelNotFound"];
+  else
+    filepath = [self filepathForChannelWithName:name];
+  
+  [self handleRequestWithFilepath:filepath onCompletion:onCompletionBlock];
 }
 
 - (void)getRecentVideosForChannelNamed:(NSString *)channelName onCompletion:(TwitchApiSourceCompletionBlock)onCompletionBlock
 {
-  [self handleRequestWithFilepath:[self urlPathForRecentVideosWithChannelName:channelName]
+  [self handleRequestWithFilepath:[self filepathForRecentVideosWithChannelName:channelName]
                      onCompletion:onCompletionBlock];
 }
 
@@ -31,17 +46,15 @@ static NSString * const kApiVersion = @"v3";
   NSString *fileName = [@[kApiVersion,
                           @"channels",
                           name] componentsJoinedByString:@"_"];
-  return [[NSBundle mainBundle] pathForResource:fileName
-                                         ofType:@"json"];
+  return [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
 }
 
-- (NSString *)urlPathForRecentVideosWithChannelName:(NSString *)channelName
+- (NSString *)filepathForRecentVideosWithChannelName:(NSString *)channelName
 {
   NSString *fileName = [@[kApiVersion,
                           @"videos",
                           channelName] componentsJoinedByString:@"_"];
-  return [[NSBundle mainBundle] pathForResource:fileName
-                                         ofType:@"json"];
+  return [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
 }
 
 #pragma mark - Helpers

@@ -11,4 +11,11 @@
 #import "RRTwitchApiSource.h"
 
 @interface RRTwitchApiFileSource : NSObject <RRTwitchApiSource>
+
+// Names of channels we can respond to
+- (NSSet *)supportedChannels;
+
+// Names of channels we have videos for
+- (NSSet *)supportedVideos;
+
 @end

@@ -9,6 +9,14 @@
 #import "RRTwitchApiSource.h"
 @class RRChannel;
 
+FOUNDATION_EXTERN NSString * const TwitchApiErrorDomain;
+
+typedef NS_ENUM(NSInteger, TwitchApiError) {
+  TwitchApiErrorUnknown = -1,
+  TwitchApiErrorChannelNotFound
+};
+
+// Error should have a code that can be read as a TwitchApiError
 typedef void (^TwitchApiWorkerCompletionBlock)(id result, NSError *error);
 
 @interface RRTwitchApiWorker : NSObject

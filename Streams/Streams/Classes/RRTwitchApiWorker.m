@@ -12,6 +12,10 @@
 #import "RRChannel.h"
 #import "RRVideo.h"
 
+NSString * const TwitchApiErrorDomain = @"com.radreichley.TwitchApiErrorDomain";
+
+static const NSInteger kTwitchChannelNotFoundCode = 422;
+
 @implementation RRTwitchApiWorker
 
 - (id)init
@@ -31,9 +35,23 @@
 
 - (void)getChannel:(NSString *)name onCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock
 {
-  TwitchApiSourceCompletionBlock sourceComplete = [self standardCompletionBlockWithOnCompletion:onCompletionBlock extraProcessing:^(RRTwitchApiWorker *this, id json) {
-    RRChannel *channel = [this channelFromJson:json];
-    onCompletionBlock(channel, nil);
+  TwitchApiSourceCompletionBlock sourceComplete = [self standardCompletionBlockWithOnCompletion:onCompletionBlock extraProcessing:^(RRTwitchApiWorker *this, NSDictionary *json) {
+    if ( json[@"error"] )
+    {
+      NSInteger errorCode = TwitchApiErrorUnknown;
+      if ( [(NSNumber *)json[@"status"] isEqualToNumber:@(kTwitchChannelNotFoundCode)] )
+        errorCode = TwitchApiErrorChannelNotFound;
+      
+      NSError *error = [NSError errorWithDomain:TwitchApiErrorDomain
+                                           code:errorCode
+                                       userInfo:nil];
+      onCompletionBlock(nil, error);
+    }
+    else
+    {
+      RRChannel *channel = [this channelFromJson:json];
+      onCompletionBlock(channel, nil);
+    }
   }];
   
   [self.apiSource getChannelWithName:name onCompletion:sourceComplete];
@@ -41,7 +59,7 @@
 
 - (void)getRecentVideosForChannel:(RRChannel *)channel onCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock
 {
-  TwitchApiSourceCompletionBlock sourceComplete = [self standardCompletionBlockWithOnCompletion:onCompletionBlock extraProcessing:^(RRTwitchApiWorker *this, id json) {
+  TwitchApiSourceCompletionBlock sourceComplete = [self standardCompletionBlockWithOnCompletion:onCompletionBlock extraProcessing:^(RRTwitchApiWorker *this, NSDictionary *json) {
     NSArray *videos = [this videosFromJson:json forChannel:channel];
     onCompletionBlock(videos, nil);
   }];
@@ -74,7 +92,7 @@
 
 #pragma mark - Helpers
 
-- (TwitchApiSourceCompletionBlock)standardCompletionBlockWithOnCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock extraProcessing:(void (^)(RRTwitchApiWorker *this, id json))extraProcessingBlock
+- (TwitchApiSourceCompletionBlock)standardCompletionBlockWithOnCompletion:(TwitchApiWorkerCompletionBlock)onCompletionBlock extraProcessing:(void (^)(RRTwitchApiWorker *this, NSDictionary *json))extraProcessingBlock
 {
   NSParameterAssert(onCompletionBlock);
   __weak __typeof(self)wkSelf = self;
