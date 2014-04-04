@@ -14,7 +14,10 @@
 
 NSString * const TwitchApiErrorDomain = @"com.radreichley.TwitchApiErrorDomain";
 
-static const NSInteger kTwitchChannelNotFoundCode = 422;
+typedef NS_ENUM(NSInteger, RealTwitchApiErrorCode) {
+  RealTwitchApiErrorCodeNotFound = 404,
+  RealTwitchApiErrorCodeUnprocessable = 422
+};
 
 @implementation RRTwitchApiWorker
 
@@ -38,9 +41,17 @@ static const NSInteger kTwitchChannelNotFoundCode = 422;
   TwitchApiSourceCompletionBlock sourceComplete = [self standardCompletionBlockWithOnCompletion:onCompletionBlock extraProcessing:^(RRTwitchApiWorker *this, NSDictionary *json) {
     if ( json[@"error"] )
     {
-      NSInteger errorCode = TwitchApiErrorUnknown;
-      if ( [(NSNumber *)json[@"status"] isEqualToNumber:@(kTwitchChannelNotFoundCode)] )
-        errorCode = TwitchApiErrorChannelNotFound;
+      NSInteger errorCode;
+      switch ([json[@"status"] integerValue]) {
+        case RealTwitchApiErrorCodeUnprocessable:
+        case RealTwitchApiErrorCodeNotFound:
+          // Not really sure why this is sometimes 404 and sometimes 422
+          errorCode = TwitchApiErrorChannelNotFound;
+          break;
+        default:
+          errorCode = TwitchApiErrorUnknown;
+          break;
+      }
       
       NSError *error = [NSError errorWithDomain:TwitchApiErrorDomain
                                            code:errorCode
