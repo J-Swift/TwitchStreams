@@ -28,8 +28,8 @@ static const CGFloat kImageMarginRight = 5;
   if ( self = [super initWithFrame:frame] )
   {
     self.opaque = YES;
-    self.backgroundColor = [UIColor colorWithWhite:0.93f alpha:1.0f];
-
+    self.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
+    
     CGFloat imageSize = CGRectGetHeight(frame) - 2*kImageInset;
     
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(kImageInset, kImageInset,
