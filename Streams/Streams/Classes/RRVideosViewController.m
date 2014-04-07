@@ -9,6 +9,8 @@
 #import "RRVideosViewController.h"
 #import "RRVideoCell.h"
 
+#import "RRVideo.h"
+
 @interface RRVideosViewController ()
 
 @property (nonatomic, copy) NSArray *videos;
@@ -48,6 +50,14 @@
                                                       forIndexPath:indexPath];
   cell.video = [self videoForIndexPath:indexPath];
   return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  RRVideo *video = [self videoForIndexPath:indexPath];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:video.urlPath]];
 }
 
 #pragma mark - Helpers
