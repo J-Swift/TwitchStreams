@@ -49,7 +49,7 @@
   UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
   attributes.size = CGSizeMake(self.cellDiameter, self.cellDiameter);
   
-  CGFloat radialRotation = (CGFloat)(2 * path.item * M_PI / self.cellCount) + self.radialOffset;
+  float radialRotation = (float)(2 * path.item * M_PI / self.cellCount) + (float)self.radialOffset;
   attributes.center = CGPointMake(self.center.x + self.radius * cosf(radialRotation),
                                   self.center.y + self.radius * sinf(radialRotation));
   return attributes;
@@ -118,7 +118,7 @@
 
 - (CGFloat)pointToRadians:(CGPoint)point
 {
-  return atan2f(point.y - self.center.y, point.x - self.center.x);
+  return atan2f((float)(point.y - self.center.y), (float)(point.x - self.center.x));
 }
 
 @end
