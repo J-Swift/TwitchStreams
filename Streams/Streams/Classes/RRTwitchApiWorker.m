@@ -83,8 +83,12 @@ typedef NS_ENUM(NSInteger, RealTwitchApiErrorCode) {
 
 - (RRChannel *)channelFromJson:(NSDictionary *)json
 {
-  return [RRChannel channelWithName:json[@"name"]
-                          imagePath:json[@"logo"]
+  // TODO: make a category/helper to achieve this dVal fallback
+  NSString *name = (![json[@"name"] isKindOfClass:[NSNull class]] ? json[@"name"] : nil );
+  NSString *imagePath = (![json[@"logo"] isKindOfClass:[NSNull class]] ? json[@"logo"] : nil );
+  
+  return [RRChannel channelWithName:name
+                          imagePath:imagePath
                      lastUpdateTime:[[self dateFormatter] dateFromString:json[@"updated_at"]]];
 }
 
@@ -92,9 +96,12 @@ typedef NS_ENUM(NSInteger, RealTwitchApiErrorCode) {
 {
   NSMutableArray *videos = [NSMutableArray array];
   [(NSArray *)json[@"videos"] enumerateObjectsUsingBlock:^(NSDictionary *video, NSUInteger idx, BOOL *stop) {
+    NSString *title = (![video[@"title"] isKindOfClass:[NSNull class]] ? video[@"title"] : nil );
+    NSString *imagePath = (![video[@"preview"] isKindOfClass:[NSNull class]] ? video[@"preview"] : nil );
+    
     [videos addObject:[RRVideo videoWithChannel:channel
-                                          title:video[@"title"]
-                                      imagePath:video[@"preview"]
+                                          title:title
+                                      imagePath:imagePath
                                         urlPath:video[@"url"]
                                      recordedAt:[[self dateFormatter] dateFromString:video[@"recorded_at"]]]];
   }];
