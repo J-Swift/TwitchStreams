@@ -9,9 +9,12 @@
 #import "RRChannelsViewController.h"
 
 #import "RRChannelCell.h"
-#import "RREmptyChannelCell.h"
 
-@interface RRChannelsViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+#import "RRRotaryLayout.h"
+
+static const NSUInteger kCellDiameter = 75;
+
+@interface RRChannelsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *channels;
 
@@ -29,17 +32,38 @@
 
 - (void)loadView
 {
-  UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-  layout.itemSize = CGSizeMake(250, 50);
+  RRRotaryLayout *layout = [[RRRotaryLayout alloc] initWithCellDiameter:kCellDiameter];
   
-  UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+  UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+                                                        collectionViewLayout:layout];
   collectionView.backgroundColor = [UIColor whiteColor];
-  [collectionView registerClass:[RRChannelCell class] forCellWithReuseIdentifier:[[RRChannelCell class] description]];
-  [collectionView registerClass:[RREmptyChannelCell class] forCellWithReuseIdentifier:[[RREmptyChannelCell class] description]];
+  [collectionView registerClass:[RRChannelCell class]
+     forCellWithReuseIdentifier:[[RRChannelCell class] description]];
   collectionView.delegate = self;
   collectionView.dataSource = self;
   
+  UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                        action:@selector(onPan:)];
+  [collectionView addGestureRecognizer:pan];
+  
   self.view = collectionView;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+  return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (UICollectionView *)collectionView
@@ -47,12 +71,36 @@
   return (UICollectionView *)self.view;
 }
 
+- (RRRotaryLayout *)rotaryLayout
+{
+  return (RRRotaryLayout *)[self collectionView].collectionViewLayout;
+}
+
 - (void)addChannel:(RRChannel *)channel
 {
   if ( channel )
   {
     [_channels addObject:channel];
-    [[self collectionView] reloadData];
+    NSInteger itemIndex = ((NSInteger)[_channels count] - 1);
+    [[self collectionView] performBatchUpdates:^{
+      [[self collectionView] insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:itemIndex
+                                                                           inSection:0]]];
+    } completion:nil];
+  }
+}
+
+- (void)onPan:(UIPanGestureRecognizer *)sender
+{
+  CGPoint location = [sender locationInView:self.view];
+  switch (sender.state) {
+    case UIGestureRecognizerStateBegan:
+      [[self rotaryLayout] beginInteractionWithPoint:location];
+      break;
+    case UIGestureRecognizerStateChanged:
+      [[self rotaryLayout] updateInteractionWithPoint:location];
+      break;
+    default:
+      break;
   }
 }
 
@@ -60,31 +108,18 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return ( [self isEmpty] ? 1 : (NSInteger)[self.channels count] );
+  return (NSInteger)[self.channels count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  if ( [self isEmpty] )
-    return [collectionView dequeueReusableCellWithReuseIdentifier:[[RREmptyChannelCell class] description] forIndexPath:indexPath];
-  else
-  {
-    RRChannelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[[RRChannelCell class] description] forIndexPath:indexPath];
-    cell.channel = [self channelForIndexPath:indexPath];
-    return cell;
-  }
+  RRChannelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[[RRChannelCell class] description]
+                                                                  forIndexPath:indexPath];
+  cell.channel = [self channelForIndexPath:indexPath];
+  return cell;
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-  // Don't allow selection of empty cell
-  if ( [[collectionView cellForItemAtIndexPath:indexPath] isKindOfClass:[RREmptyChannelCell class]] )
-    return NO;
-  
-  return YES;
-}
+#pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -93,11 +128,6 @@
 }
 
 #pragma mark - Helpers
-
-- (BOOL)isEmpty
-{
-  return ( [self.channels count] == 0 );
-}
 
 - (RRChannel *)channelForIndexPath:(NSIndexPath *)indexPath
 {
