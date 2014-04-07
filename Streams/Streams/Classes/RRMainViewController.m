@@ -13,13 +13,15 @@
 #import "RRUser.h"
 #import "RRTwitchApiWorker.h"
 
+#define PRELOAD_LIST 1
+
+static const CGFloat kRotaryVisibleWidth = 150;
+
 static const NSInteger kSpinnerTag = 5298713;
 
 @interface RRMainViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, weak) RRChannelsViewController *channelsVC;
-
-@property (nonatomic, weak) UIView *header;
 
 @property (nonatomic, strong) RRUser *currentUser;
 @property (nonatomic, strong) RRTwitchApiWorker *apiWorker;
@@ -42,16 +44,13 @@ static const NSInteger kSpinnerTag = 5298713;
 - (void)loadView
 {
   self.view = [UIView new];
+  self.view.backgroundColor = [UIColor whiteColor];
   
   RRChannelsViewController *channelsVC = [RRChannelsViewController new];
   [self addChildViewController:channelsVC];
   [self.view addSubview:channelsVC.view];
   [channelsVC didMoveToParentViewController:self];
   self.channelsVC = channelsVC;
-  
-  UIView *header = [self generateTableHeader];
-  [self.view addSubview:header];
-  self.header = header;
   
   __weak __typeof(self)wkSelf = self;
   channelsVC.onSelectBlock = ^(RRChannelsViewController *sender, RRChannel *channel){
@@ -68,6 +67,22 @@ static const NSInteger kSpinnerTag = 5298713;
       }
     }];
   };
+  
+#if PRELOAD_LIST
+  [self addFavoriteChannel:@"blitzdota"];
+  [self addFavoriteChannel:@"puppey"];
+  [self addFavoriteChannel:@"dreamleague"];
+  [self addFavoriteChannel:@"draskyl"];
+  [self addFavoriteChannel:@"purgegamers"];
+  [self addFavoriteChannel:@"sing_sing"];
+  [self addFavoriteChannel:@"iceiceice"];
+  [self addFavoriteChannel:@"dendi"];
+#endif
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden
+{
+  return self.channelsVC;
 }
 
 - (NSString *)title
@@ -75,53 +90,15 @@ static const NSInteger kSpinnerTag = 5298713;
   return @"Channels";
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
-  [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-  [super viewWillDisappear:animated];
-  [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
-
 - (void)viewWillLayoutSubviews
 {
   [super viewWillLayoutSubviews];
-
-  __typeof(self.header)header = self.header;
-  CGRect frame = header.frame;
-  frame.size.width = self.view.bounds.size.width;
-  header.frame = frame;
   
   __typeof(self.channelsVC)channelsVC = self.channelsVC;
-  frame = CGRectMake(0, CGRectGetMaxY(frame), frame.size.width, CGRectGetMaxY(self.view.bounds) - CGRectGetMaxY(frame));
-  channelsVC.view.frame = frame;
-}
-
-#pragma mark - View generators
-
-- (UIView *)generateTableHeader
-{
-  UILabel *tableHeader = [UILabel new];
-  tableHeader.backgroundColor = [UIColor brownColor];
-  tableHeader.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-  tableHeader.text = @"Tap here to follow a channel!";
-  tableHeader.textAlignment = NSTextAlignmentCenter;
-  
-  UITapGestureRecognizer *recg = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                         action:@selector(addChannelTapped)];
-  tableHeader.userInteractionEnabled = YES;
-  [tableHeader addGestureRecognizer:recg];
-  
-  [tableHeader sizeToFit];
-  CGRect frame = tableHeader.frame;
-  frame.size.height += 20.0f;
-  tableHeader.frame = frame;
-  
-  return tableHeader;
+  CGFloat size = MAX(self.view.bounds.size.width,self.view.bounds.size.height);
+  CGPoint leftCenter = CGPointMake(0, CGRectGetMidY(self.view.bounds));
+  channelsVC.view.frame = CGRectMake(leftCenter.x - (size - kRotaryVisibleWidth), leftCenter.y - size/2.0f,
+                                     size, size);
 }
 
 #pragma mark - Handlers
@@ -148,33 +125,8 @@ static const NSInteger kSpinnerTag = 5298713;
 {
   if ( ![alertView cancelButtonIndex] == buttonIndex )
   {
-    [self showSpinner];
-    
     NSString *channelName = [alertView textFieldAtIndex:0].text;
-    [self.apiWorker getChannel:channelName onCompletion:^(RRChannel *channel, NSError *error) {
-      [self hideSpinner];
-      
-      if ( error )
-      {
-        NSString *message;
-        switch ([error code]) {
-          case TwitchApiErrorChannelNotFound:
-            message = [NSString stringWithFormat:@"No channel named: %@", channelName];
-            break;
-          default:
-          case TwitchApiErrorUnknown:
-            message = @"An unkown error occured.";
-            break;
-        }
-        [self showAlertWithTitle:@"Error" message:message];
-      }
-      else
-      {
-        [self.currentUser addChannelToFavorites:channel];
-        RRChannelsViewController *channelsVC = self.channelsVC;
-        [channelsVC addChannel:channel];
-      }
-    }];
+    [self addFavoriteChannel:channelName];
   }
 }
 
@@ -209,6 +161,35 @@ static const NSInteger kSpinnerTag = 5298713;
                                           otherButtonTitles:nil];
     [alert show];
   });
+}
+
+- (void)addFavoriteChannel:(NSString *)channelName
+{
+  [self showSpinner];
+  [self.apiWorker getChannel:channelName onCompletion:^(RRChannel *channel, NSError *error) {
+    [self hideSpinner];
+    
+    if ( error )
+    {
+      NSString *message;
+      switch ([error code]) {
+        case TwitchApiErrorChannelNotFound:
+          message = [NSString stringWithFormat:@"No channel named: %@", channelName];
+          break;
+        default:
+        case TwitchApiErrorUnknown:
+          message = @"An unkown error occured.";
+          break;
+      }
+      [self showAlertWithTitle:@"Error" message:message];
+    }
+    else
+    {
+      [self.currentUser addChannelToFavorites:channel];
+      RRChannelsViewController *channelsVC = self.channelsVC;
+      [channelsVC addChannel:channel];
+    }
+  }];
 }
 
 @end
